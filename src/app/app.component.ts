@@ -4,9 +4,10 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: ` <router-outlet /> `,
+  styles: `
+    @media screen and (max-width: 650px) {
+    }
+  `,
 })
-export class AppComponent {
-  title = 'FrontCIC';
-}
+export class AppComponent {}
