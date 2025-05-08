@@ -1,0 +1,7 @@
+<main>
+  <div>
+    @for(image of product!.images; track $index){
+    <img [ngSrc]="image" alt="image" width="200" height="300" />
+    }
+  </div>
+</main>

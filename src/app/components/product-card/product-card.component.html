@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" (click)="goToProductDetail(product.id)">
     <img [ngSrc]="product.images[0]" alt="image" width="200" height="200">
     <nav>
         <h3>{{ product.title }}</h3>
