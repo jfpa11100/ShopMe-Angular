@@ -1,0 +1,7 @@
+<div class="card">
+    <img [ngSrc]="product.images[0]" alt="image" width="200" height="200">
+    <nav>
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price | currency }}</p>
+    </nav>
+</div>

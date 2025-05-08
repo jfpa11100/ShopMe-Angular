@@ -1,1 +1,19 @@
-<p>home works!</p>
+<header><h2>ShopMe</h2></header>
+
+<main>
+  <div class="search-bar">
+    <input type="text" placeholder="Search for a product" />
+  </div>
+  <div class="products-container">
+    @defer{ 
+      @for (product of products; track $index){
+        <app-product-card [product]="product" />
+      }
+    }@loading {
+      <h1>Loading Products...</h1>
+    }
+    @if(products == undefined){
+      <h1>Couldn't load products</h1>
+    }
+  </div>
+</main>
