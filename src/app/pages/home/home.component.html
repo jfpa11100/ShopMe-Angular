@@ -2,11 +2,11 @@
 
 <main>
   <div class="search-bar">
-    <input type="text" placeholder="Search for a product" />
+    <input type="text" placeholder="Search for a product" [(ngModel)]="searchTerm" (input)="onSearch()" />
   </div>
   <div class="products-container">
     @defer{ 
-      @for (product of products; track $index){
+      @for (product of copyProducts(); track $index){
         <app-product-card [product]="product" />
       }
     }@loading {
