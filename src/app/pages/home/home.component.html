@@ -1,19 +1,58 @@
-<header><h2>ShopMe</h2></header>
+<header
+  class="flex flex-col justify-between gap-y-10 w-full p-3 text-white bg-gradient-to-tr from-green-500 via-gray-900 to-green-950 rounded-b-xs"
+>
+  <section class="flex justify-between items-center w-full sm:gap-x-5">
+    <nav class="flex align-middle gap-x-2 text-sm">
+      <img
+        class="object-cover"
+        ngSrc="menu.png"
+        alt="menu"
+        width="25"
+        height="25"
+      />
+      <h5 class="flex">Menu</h5>
+    </nav>
+    <h2 class="text-xl">ShopMe</h2>
+    <nav class="flex items-center gap-5 text-sm">
+      <h5>Log In</h5>
+      <h5>Cart</h5>
+    </nav>
+  </section>
+  <section class="sm:block top-32 w-full sm:w-6/10 xl:w-5/10">
+    <h1 class="font-light text-3xl max-w-sm sm:text-4xl text-balance">
+      Shop from our intensive collection
+    </h1>
+  </section>
+</header>
 
-<main>
-  <div class="search-bar">
-    <input type="text" placeholder="Search for a product" [(ngModel)]="searchTerm" (input)="onSearch()" />
+<main class="flex flex-col items-center mb-15">
+  <div>
+    <input
+      class="text-neutral-300 bg-linear-to-r from-neutral-600 to-neutral-800 border-2 border-neutral-400 rounded-md  px-2 py-1.5 w-xs sm:w-md my-5 outline-none transform-3d hover:transition-colors hover:border-neutral-700 focus:border-green-700"
+      type="text"
+      placeholder="Search a product ..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+    />
   </div>
-  <div class="products-container">
-    @defer{ 
-      @for (product of copyProducts(); track $index){
-        <app-product-card [product]="product" />
-      }
-    }@loading {
-      <h1>Loading Products...</h1>
-    }
-    @if(products == undefined){
-      <h1>Couldn't load products</h1>
+  <!-- Products container -->
+  <div class="px-5 flex flex-wrap xl:gap-x-12 justify-center gap-5">
+    @defer{ @for (product of products(); track $index){
+    <app-product-card
+      [product]="product"
+      (deleteProduct)="onDeleteProduct($event)"
+    />
+    } }@loading {
+    <h1>Loading Products...</h1>
+    } @if(products == undefined){
+    <h1>Couldn't load products</h1>
     }
   </div>
+  <nav
+    class="flex items-center gap-x-1 fixed bottom-5 bg-green-500 px-4 py-2 rounded-xl text-white"
+  >
+    <button (click)="goToCreateProduct()">Add product</button>
+    <img ngSrc="add.png" alt="add" width="20" height="20" />
+  </nav>
 </main>
+<footer></footer>
