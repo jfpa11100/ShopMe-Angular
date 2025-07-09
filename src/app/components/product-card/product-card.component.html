@@ -1,7 +1,19 @@
-<div class="card" (click)="goToProductDetail(product.id)">
-    <img [ngSrc]="product.images[0]" alt="image" width="200" height="200">
-    <nav>
-        <h3>{{ product.title }}</h3>
-        <p>{{ product.price | currency }}</p>
-    </nav>
+<div>
+  <img
+  class="rounded-xl"
+    (click)="goToProductDetail(product.id)"
+    [ngSrc]="product.images[0]"
+    alt="image"
+    width="200"
+    height="200"
+  />
+  <nav>
+    <h3 class="text-balance text-xl mb-1">{{ product.title }}</h3>
+    <footer class="flex justify-between">
+      <p class="font-medium">{{ product.price | currency }}</p>
+      <a (click)="onDeleteProduct(product.id)">
+        <img ngSrc="delete.png" alt="del" width="20" height="20" />
+      </a>
+    </footer>
+  </nav>
 </div>

@@ -1,5 +1,5 @@
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { Router } from '@angular/router';
 
@@ -7,13 +7,17 @@ import { Router } from '@angular/router';
   selector: 'app-product-card',
   imports: [NgOptimizedImage, CurrencyPipe],
   templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product!:Product;
-  router = inject(Router)
+  @Input() product!: Product;
+  @Output() deleteProduct = new EventEmitter<number>();
+  router = inject(Router);
 
   goToProductDetail(productId: number) {
     this.router.navigate(['/product', productId]);
+  }
+
+  onDeleteProduct(productId: number) {
+    this.deleteProduct.emit(productId);
   }
 }
