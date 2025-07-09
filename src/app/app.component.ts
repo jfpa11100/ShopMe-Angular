@@ -5,9 +5,6 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   template: ` <router-outlet /> `,
-  styles: `
-    @media screen and (max-width: 650px) {
-    }
-  `,
+  styles: ``,
 })
 export class AppComponent {}
